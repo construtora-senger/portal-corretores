@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal do Corretor | Construtora Senger</title>
+  <meta name="description" content="Portal oficial de materiais comerciais da Construtora Senger para corretores parceiros." />
+  <style>
+    :root {
+      --bg: #f6f2ec;
+      --card: #fffaf3;
+      --ink: #1d1712;
+      --muted: #716457;
+      --gold: #b98746;
+      --gold-2: #d6ad72;
+      --brown: #4b2f21;
+      --line: rgba(75,47,33,.16);
+      --shadow: 0 22px 60px rgba(38, 24, 15, .14);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(214,173,114,.28), transparent 34rem),
+        linear-gradient(135deg, #fbf7f0 0%, var(--bg) 54%, #eee4d8 100%);
+      color: var(--ink);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(246,242,236,.84);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--brown), var(--gold));
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 800;
+      letter-spacing: .08em;
+      box-shadow: 0 10px 26px rgba(75,47,33,.22);
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      line-height: 1.1;
+      min-width: 0;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 16px;
+      letter-spacing: .03em;
+      white-space: nowrap;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,250,243,.76);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(38,24,15,.12);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--brown), #7a4c2e);
+      color: white;
+      border-color: transparent;
+    }
+
+    .hero {
+      padding: 52px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-card {
+      background: rgba(255,250,243,.74);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      padding: clamp(26px, 5vw, 52px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-card:after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -100px;
+      width: 280px;
+      height: 280px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(185,135,70,.28), transparent 70%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(185,135,70,.12);
+      color: var(--brown);
+      border: 1px solid rgba(185,135,70,.22);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 20px 0 14px;
+      font-size: clamp(34px, 6vw, 66px);
+      line-height: .96;
+      letter-spacing: -.055em;
+    }
+
+    .lead {
+      max-width: 680px;
+      font-size: clamp(16px, 2.3vw, 20px);
+      line-height: 1.55;
+      color: var(--muted);
+      margin: 0 0 24px;
+    }
+
+    .hero-note {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      max-width: 610px;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 14px;
+    }
+
+    .status-card {
+      border-radius: 28px;
+      background: linear-gradient(160deg, #382217, #735035 54%, #b98746);
+      color: white;
+      padding: 26px;
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .status-card:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent);
+      transform: translateX(-100%);
+      animation: shine 5s infinite;
+    }
+
+    @keyframes shine {
+      0%, 40% { transform: translateX(-100%); }
+      70%, 100% { transform: translateX(100%); }
+    }
+
+    .status-card strong {
+      font-size: 42px;
+      letter-spacing: -.05em;
+      line-height: .95;
+      position: relative;
+    }
+
+    .status-card span,
+    .status-card p {
+      position: relative;
+      margin: 0;
+      color: rgba(255,255,255,.78);
+      line-height: 1.45;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .mini {
+      border-radius: 22px;
+      background: rgba(255,250,243,.72);
+      border: 1px solid var(--line);
+      padding: 18px;
+      min-height: 118px;
+      box-shadow: 0 16px 38px rgba(38,24,15,.08);
+    }
+
+    .mini strong {
+      display: block;
+      font-size: 26px;
+      margin-bottom: 6px;
+    }
+
+    .mini span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .section-head {
+      padding: 34px 0 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 42px);
+      letter-spacing: -.04em;
+      line-height: 1;
+    }
+
+    .section-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.45;
+      max-width: 650px;
+    }
+
+    .search {
+      width: min(360px, 100%);
+      border: 1px solid var(--line);
+      background: rgba(255,250,243,.82);
+      border-radius: 999px;
+      min-height: 48px;
+      padding: 0 18px;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      padding-bottom: 54px;
+    }
+
+    .product {
+      background: rgba(255,250,243,.82);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(38,24,15,.09);
+      transition: .22s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .cover {
+      height: 190px;
+      background:
+        linear-gradient(135deg, rgba(29,23,18,.18), rgba(29,23,18,.62)),
+        var(--cover);
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+      color: white;
+    }
+
+    .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.24);
+      backdrop-filter: blur(12px);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .cover h3 {
+      margin: 0;
+      font-size: 27px;
+      letter-spacing: -.035em;
+      line-height: 1;
+      text-shadow: 0 10px 30px rgba(0,0,0,.32);
+    }
+
+    .product-body {
+      padding: 20px;
+    }
+
+    .product-body p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.46;
+      font-size: 14.5px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .chip {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--brown);
+      background: rgba(185,135,70,.12);
+      border: 1px solid rgba(185,135,70,.18);
+      border-radius: 999px;
+      padding: 7px 9px;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .actions .btn {
+      border-radius: 14px;
+      padding: 11px 10px;
+      font-size: 13px;
+      min-height: 42px;
+    }
+
+    .actions .full { grid-column: 1 / -1; }
+
+    .panel {
+      display: none;
+      padding: 20px 0 70px;
+    }
+
+    .panel.active { display: block; }
+
+    .back {
+      margin: 18px 0;
+    }
+
+    .detail {
+      background: rgba(255,250,243,.84);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .detail-hero {
+      min-height: 280px;
+      padding: 34px;
+      background:
+        linear-gradient(135deg, rgba(29,23,18,.24), rgba(29,23,18,.72)),
+        var(--detail-cover);
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .detail-hero h2 {
+      margin: 12px 0 8px;
+      font-size: clamp(34px, 6vw, 62px);
+      letter-spacing: -.055em;
+      line-height: .95;
+    }
+
+    .detail-hero p {
+      margin: 0;
+      max-width: 700px;
+      color: rgba(255,255,255,.82);
+      font-size: 17px;
+      line-height: 1.5;
+    }
+
+    .detail-content {
+      padding: 24px;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+    }
+
+    .info-box {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+      background: rgba(255,255,255,.48);
+    }
+
+    .info-box h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      letter-spacing: -.02em;
+    }
+
+    .info-box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .material-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .material {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(255,255,255,.56);
+      transition: .2s ease;
+    }
+
+    .material:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(38,24,15,.1);
+    }
+
+    .material strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .material span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .updated {
+      margin-top: 16px;
+      border-radius: 18px;
+      padding: 14px 16px;
+      background: rgba(185,135,70,.12);
+      border: 1px solid rgba(185,135,70,.22);
+      color: var(--brown);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0 34px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .detail-content {
+        grid-template-columns: 1fr;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .search {
+        margin-top: 14px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        width: min(100% - 22px, 1180px);
+      }
+
+      .topbar {
+        min-height: 66px;
+      }
+
+      .brand-text strong {
+        font-size: 14px;
+      }
+
+      .brand-text span {
+        font-size: 11px;
+      }
+
+      .header-actions .btn:not(.primary) {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .hero-card {
+        border-radius: 26px;
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: 39px;
+      }
+
+      .lead {
+        font-size: 16px;
+      }
+
+      .mini-grid,
+      .products,
+      .material-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cover {
+        height: 178px;
+      }
+
+      .detail-hero {
+        min-height: 250px;
+        padding: 24px;
+      }
+
+      .detail-content {
+        padding: 14px;
+      }
+
+      .actions {
+        grid-template-columns: 1fr;
+      }
+
+      .actions .full {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap topbar">
+      <a class="brand" href="#" onclick="showHome(); return false;">
+        <div class="brand-mark">S</div>
+        <div class="brand-text">
+          <strong>Construtora Senger</strong>
+          <span>Portal oficial do corretor</span>
+        </div>
+      </a>
+      <div class="header-actions">
+        <a class="btn" href="#empreendimentos">Empreendimentos</a>
+        <a class="btn primary" href="https://wa.me/5554999013331" target="_blank" rel="noopener">Falar com Senger</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-card">
+          <span class="eyebrow">material oficial sempre atualizado</span>
+          <h1>Venda com o material certo, sem perder tempo.</h1>
+          <p class="lead">
+            Acesse tabelas, plantas, imagens, vídeos e apresentações oficiais dos empreendimentos da Construtora Senger em um único lugar.
+          </p>
+          <div class="hero-note">
+            <strong>✓</strong>
+            <span>
+              Use sempre este portal antes de enviar qualquer material ao cliente. Arquivos antigos de WhatsApp ou downloads salvos podem estar desatualizados.
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="status-card">
+            <span>Portal de apoio comercial</span>
+            <strong>1 link.<br>Todos os produtos.</strong>
+            <p>Versão inicial para corretores parceiros. Depois pode evoluir para login, métricas e controle de acesso.</p>
+          </div>
+
+          <div class="mini-grid">
+            <div class="mini">
+              <strong>100+</strong>
+              <span>corretores parceiros com acesso ao mesmo material.</span>
+            </div>
+            <div class="mini">
+              <strong>Hoje</strong>
+              <span>material centralizado e pronto para uso comercial.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="empreendimentos" class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Escolha o empreendimento</h2>
+          <p>Clique no produto desejado para acessar informações, materiais oficiais e links de apresentação.</p>
+        </div>
+        <input class="search" id="search" placeholder="Buscar empreendimento..." oninput="filterProducts()" />
+      </div>
+
+      <div class="products" id="products">
+        <article class="product" data-name="renaissance alto padrão luxo residencial carazinho" style="--cover:url('assets/renaissance-capa.jpg')">
+          <div class="cover">
+            <span class="badge">pré-venda exclusiva</span>
+            <h3>Renaissance</h3>
+          </div>
+          <div class="product-body">
+            <p>Empreendimento residencial de alto padrão com exclusividade, lazer completo e plantas especiais.</p>
+            <div class="chips">
+              <span class="chip">2 ou 3 suítes</span>
+              <span class="chip">Casa suspensa</span>
+              <span class="chip">Entrega 2031</span>
+            </div>
+            <div class="actions">
+              <button class="btn primary full" onclick="openProduct('renaissance')">Acessar material</button>
+              <a class="btn" href="https://construtora-senger.github.io/renaissanceapresentacao/" target="_blank">Apresentar</a>
+              <a class="btn" href="https://construtora-senger.github.io/renaissance/" target="_blank">Pré-venda</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" data-name="premium office centro médico salas comerciais saúde" style="--cover:url('assets/premium-office-capa.jpg')">
+          <div class="cover">
+            <span class="badge">salas comerciais</span>
+            <h3>Premium Office</h3>
+          </div>
+          <div class="product-body">
+            <p>Centro médico e comercial pensado para profissionais da saúde e investidores.</p>
+            <div class="chips">
+              <span class="chip">Saúde</span>
+              <span class="chip">Rooftop</span>
+              <span class="chip">Investimento</span>
+            </div>
+            <div class="actions">
+              <button class="btn primary full" onclick="openProduct('premium')">Acessar material</button>
+              <a class="btn" href="#" target="_blank">Tabela</a>
+              <a class="btn" href="#" target="_blank">Apresentar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" data-name="quality pronto para morar residencial apartamentos" style="--cover:url('assets/quality-capa.jpg')">
+          <div class="cover">
+            <span class="badge">pronto para morar</span>
+            <h3>Quality</h3>
+          </div>
+          <div class="product-body">
+            <p>Apartamentos prontos para famílias que buscam praticidade, localização e entrega imediata.</p>
+            <div class="chips">
+              <span class="chip">Pronto</span>
+              <span class="chip">Residencial</span>
+              <span class="chip">Família</span>
+            </div>
+            <div class="actions">
+              <button class="btn primary full" onclick="openProduct('quality')">Acessar material</button>
+              <a class="btn" href="#" target="_blank">Tabela</a>
+              <a class="btn" href="#" target="_blank">Fotos</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" data-name="evolutti investimento construção apartamentos" style="--cover:url('assets/evolutti-capa.jpg')">
+          <div class="cover">
+            <span class="badge">em construção</span>
+            <h3>Evolutti</h3>
+          </div>
+          <div class="product-body">
+            <p>Produto em construção voltado a investidores e compradores que buscam valorização.</p>
+            <div class="chips">
+              <span class="chip">Investimento</span>
+              <span class="chip">Valorização</span>
+              <span class="chip">Obra</span>
+            </div>
+            <div class="actions">
+              <button class="btn primary full" onclick="openProduct('evolutti')">Acessar material</button>
+              <a class="btn" href="#" target="_blank">Tabela</a>
+              <a class="btn" href="#" target="_blank">Plantas</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" data-name="prime pronto apartamentos famílias" style="--cover:url('assets/prime-capa.jpg')">
+          <div class="cover">
+            <span class="badge">residencial</span>
+            <h3>Prime</h3>
+          </div>
+          <div class="product-body">
+            <p>Produto residencial para atendimento de famílias e compradores finais.</p>
+            <div class="chips">
+              <span class="chip">Família</span>
+              <span class="chip">Residencial</span>
+              <span class="chip">Venda direta</span>
+            </div>
+            <div class="actions">
+              <button class="btn primary full" onclick="openProduct('prime')">Acessar material</button>
+              <a class="btn" href="#" target="_blank">Tabela</a>
+              <a class="btn" href="#" target="_blank">Fotos</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product" data-name="personalité apartamentos famílias residencial" style="--cover:url('assets/personalite-capa.jpg')">
+          <div class="cover">
+            <span class="badge">residencial</span>
+            <h3>Personalité</h3>
+          </div>
+          <div class="product-body">
+            <p>Material comercial para corretores consultarem opções, imagens e informações do empreendimento.</p>
+            <div class="chips">
+              <span class="chip">Residencial</span>
+              <span class="chip">Família</span>
+              <span class="chip">Senger</span>
+            </div>
+            <div class="actions">
+              <button class="btn primary full" onclick="openProduct('personalite')">Acessar material</button>
+              <a class="btn" href="#" target="_blank">Tabela</a>
+              <a class="btn" href="#" target="_blank">Fotos</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <section id="productPanel" class="panel">
+    <div class="wrap">
+      <button class="btn back" onclick="showHome()">← Voltar aos empreendimentos</button>
+      <div class="detail" id="detail"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <strong>Construtora Senger</strong><br>
+      Portal interno de apoio comercial para corretores parceiros. Antes de enviar tabela, planta ou apresentação ao cliente, confira sempre a versão disponível neste link.
+    </div>
+  </footer>
+
+  <script>
+    const produtos = {
+      renaissance: {
+        nome: "Renaissance",
+        status: "Pré-venda exclusiva",
+        descricao: "Um novo padrão de exclusividade em Carazinho. Residencial de alto padrão com 18 pavimentos, lazer completo, plantas especiais e unidades diferenciadas.",
+        capa: "assets/renaissance-capa.jpg",
+        destaques: [
+          "2 ou 3 suítes, mais lavabo",
+          "Casa suspensa com terraço privativo",
+          "Projetos personalizados e plantas especiais",
+          "Área de lazer premium com piscinas, sauna, hidro e gourmet",
+          "Entrega prevista para 2031"
+        ],
+        atualizado: "Atualize aqui a data da última tabela do Renaissance.",
+        materiais: [
+          ["Apresentação para cliente", "Link bonito para usar em reunião ou WhatsApp.", "https://construtora-senger.github.io/renaissanceapresentacao/"],
+          ["Página de pré-venda", "Fluxo inicial de qualificação do cliente.", "https://construtora-senger.github.io/renaissance/"],
+          ["Disponibilidades e valores", "Abrir apenas em atendimento ou reunião.", "https://construtora-senger.github.io/renaissancedisponibilidades/"],
+          ["Vídeos oficiais", "Coloque aqui o link da pasta ou vídeo principal.", "#"],
+          ["Fotos e renders", "Imagens oficiais para divulgação.", "#"],
+          ["Plantas", "Plantas oficiais atualizadas.", "#"]
+        ]
+      },
+      premium: {
+        nome: "Premium Office",
+        status: "Centro médico e comercial",
+        descricao: "Empreendimento comercial voltado a profissionais da saúde, investidores e empresas que buscam endereço qualificado.",
+        capa: "assets/premium-office-capa.jpg",
+        destaques: [
+          "Salas comerciais",
+          "Foco em profissionais da saúde",
+          "Estacionamento evoluído",
+          "Sala de espera com rooftop",
+          "Produto com perfil de investimento"
+        ],
+        atualizado: "Atualize aqui a data da última tabela do Premium Office.",
+        materiais: [
+          ["Tabela atualizada", "Substitua pelo link oficial da tabela.", "#"],
+          ["Apresentação", "PDF ou página de venda.", "#"],
+          ["Plantas", "Arquivos oficiais das salas.", "#"],
+          ["Fotos e vídeos", "Pasta com material de divulgação.", "#"]
+        ]
+      },
+      quality: {
+        nome: "Quality",
+        status: "Pronto para morar",
+        descricao: "Empreendimento entregue, ideal para clientes que buscam mudança rápida, segurança e produto pronto.",
+        capa: "assets/quality-capa.jpg",
+        destaques: [
+          "Pronto para morar",
+          "Produto residencial",
+          "Venda para famílias",
+          "Material oficial centralizado"
+        ],
+        atualizado: "Atualize aqui a data da última tabela do Quality.",
+        materiais: [
+          ["Tabela atualizada", "Substitua pelo link oficial da tabela.", "#"],
+          ["Fotos", "Imagens reais e oficiais.", "#"],
+          ["Plantas", "Arquivos oficiais.", "#"],
+          ["Vídeos", "Vídeos para envio ao cliente.", "#"]
+        ]
+      },
+      evolutti: {
+        nome: "Evolutti",
+        status: "Em construção",
+        descricao: "Produto em construção para compradores que buscam oportunidade, valorização e condição comercial estratégica.",
+        capa: "assets/evolutti-capa.jpg",
+        destaques: [
+          "Produto em construção",
+          "Perfil investidor",
+          "Potencial de valorização",
+          "Tabela centralizada"
+        ],
+        atualizado: "Atualize aqui a data da última tabela do Evolutti.",
+        materiais: [
+          ["Tabela atualizada", "Substitua pelo link oficial da tabela.", "#"],
+          ["Apresentação", "Material oficial do produto.", "#"],
+          ["Plantas", "Arquivos oficiais.", "#"],
+          ["Fotos e vídeos", "Pasta com criativos.", "#"]
+        ]
+      },
+      prime: {
+        nome: "Prime",
+        status: "Residencial",
+        descricao: "Produto residencial para atendimento de compradores finais e famílias.",
+        capa: "assets/prime-capa.jpg",
+        destaques: [
+          "Apartamentos residenciais",
+          "Produto para famílias",
+          "Material de venda organizado",
+          "Tabela oficial centralizada"
+        ],
+        atualizado: "Atualize aqui a data da última tabela do Prime.",
+        materiais: [
+          ["Tabela atualizada", "Substitua pelo link oficial da tabela.", "#"],
+          ["Fotos", "Imagens oficiais.", "#"],
+          ["Plantas", "Arquivos oficiais.", "#"],
+          ["Vídeos", "Vídeos comerciais.", "#"]
+        ]
+      },
+      personalite: {
+        nome: "Personalité",
+        status: "Residencial",
+        descricao: "Material comercial centralizado para consulta rápida dos corretores parceiros.",
+        capa: "assets/personalite-capa.jpg",
+        destaques: [
+          "Produto residencial",
+          "Informações oficiais",
+          "Materiais atualizados",
+          "Apoio ao corretor"
+        ],
+        atualizado: "Atualize aqui a data da última tabela do Personalité.",
+        materiais: [
+          ["Tabela atualizada", "Substitua pelo link oficial da tabela.", "#"],
+          ["Fotos", "Imagens oficiais.", "#"],
+          ["Plantas", "Arquivos oficiais.", "#"],
+          ["Vídeos", "Vídeos comerciais.", "#"]
+        ]
+      }
+    };
+
+    function openProduct(id) {
+      const p = produtos[id];
+      if (!p) return;
+
+      const materiais = p.materiais.map(item => `
+        <a class="material" href="${item[2]}" target="_blank" rel="noopener">
+          <strong>${item[0]}</strong>
+          <span>${item[1]}</span>
+        </a>
+      `).join("");
+
+      const destaques = p.destaques.map(item => `<li>${item}</li>`).join("");
+
+      document.getElementById("detail").innerHTML = `
+        <div class="detail-hero" style="--detail-cover:url('${p.capa}')">
+          <span class="eyebrow">${p.status}</span>
+          <h2>${p.nome}</h2>
+          <p>${p.descricao}</p>
+        </div>
+        <div class="detail-content">
+          <div class="info-box">
+            <h3>Informações comerciais</h3>
+            <ul>${destaques}</ul>
+            <div class="updated">Última atualização: ${p.atualizado}</div>
+          </div>
+          <div class="info-box">
+            <h3>Materiais oficiais</h3>
+            <div class="material-grid">${materiais}</div>
+          </div>
+        </div>
+      `;
+
+      document.getElementById("home").style.display = "none";
+      document.getElementById("productPanel").classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showHome() {
+      document.getElementById("home").style.display = "block";
+      document.getElementById("productPanel").classList.remove("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function filterProducts() {
+      const term = document.getElementById("search").value.toLowerCase().trim();
+      document.querySelectorAll(".product").forEach(card => {
+        const name = card.getAttribute("data-name");
+        card.style.display = name.includes(term) ? "" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
